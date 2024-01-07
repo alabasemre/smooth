@@ -24,19 +24,19 @@ function Sidebar() {
 
                 <div className={styles['sidebar-items']}>
                     <NavLink
-                        to=''
+                        to='/konu'
                         className={({ isActive }) => activeClass(isActive)}
                     >
                         Konu Ekle
                     </NavLink>
                     <NavLink
-                        to=''
+                        to='/sprint'
                         className={({ isActive }) => activeClass(isActive)}
                     >
                         Sprint Ekle
                     </NavLink>
                     <NavLink
-                        to=''
+                        to='/kapsam'
                         className={({ isActive }) => activeClass(isActive)}
                     >
                         Kapsam
@@ -48,7 +48,7 @@ function Sidebar() {
                         Pano
                     </NavLink>
                     <NavLink
-                        to=''
+                        to='/ayarlar'
                         className={({ isActive }) => activeClass(isActive)}
                     >
                         Proje Ayarları

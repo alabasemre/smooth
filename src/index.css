@@ -27,11 +27,16 @@
 
 body {
     all: inherit;
-    font-family: 'Urbanist', sans-serif;
+    font-family: 'Urbanist', sans-serif !important;
     overflow: hidden;
     color: var(--primary-text);
 }
 
 p {
     margin: 0;
+}
+
+button {
+    all: inherit;
+    font-family: 'Urbanist', sans-serif !important;
 }

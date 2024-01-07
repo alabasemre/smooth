@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import './index.css';
 import HomeLayout from './layouts/HomeLayout';
 import KanbanPage from './Pages/Kanban/KanbanPage';
+import TaskFormPage from './Pages/Task/TaskFormPage';
 
 const router = createBrowserRouter([
     {
@@ -10,6 +11,7 @@ const router = createBrowserRouter([
         children: [
             { path: '/', element: <KanbanPage /> },
             { path: '/pano', element: <KanbanPage /> },
+            { path: '/konu', element: <TaskFormPage /> },
         ],
     },
 ]);

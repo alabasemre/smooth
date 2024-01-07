@@ -1,25 +1,13 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 
 import KanbanColumn from './KanbanColumn';
-import initialData from '../../initial-data';
 
 import styles from './Kanban.module.css';
+import TaskContext from '../../store/task-context';
 
 function KanbanBoard() {
-    const [data, setData] = useState(initialData);
-
-    function onDragStart() {
-        // document.body.style.color = 'orange';
-    }
-
-    function onDragUpdate() {
-        // console.log(update);
-        // const { destination } = update;
-        // const opacity = destination
-        //     ? destination.index / Object.keys(data.tasks).length
-        //     : 0;
-    }
+    const { tasks, updateList } = useContext(TaskContext);
 
     function onDragEnd(result) {
         const { destination, source, draggableId } = result;
@@ -31,8 +19,8 @@ function KanbanBoard() {
             return;
         }
 
-        const start = data.columns[source.droppableId];
-        const finish = data.columns[destination.droppableId];
+        const start = tasks.columns[source.droppableId];
+        const finish = tasks.columns[destination.droppableId];
 
         if (start === finish) {
             const newTaskIds = Array.from(start.taskIds);
@@ -45,14 +33,23 @@ function KanbanBoard() {
             };
 
             const newData = {
-                ...data,
+                ...tasks,
                 columns: {
-                    ...data.columns,
+                    ...tasks.columns,
                     [newColumn.id]: newColumn,
                 },
             };
 
-            setData(newData);
+            // const newData = {
+            //     ...tasks,
+            //     tasks: {...tasks.tasks, [] },
+            //     columns: {
+            //         ...tasks.columns,
+            //         [newColumn.id]: newColumn,
+            //     },
+            // };
+
+            updateList(newData);
             return;
         }
 
@@ -73,35 +70,38 @@ function KanbanBoard() {
         };
 
         const newState = {
-            ...data,
+            ...tasks,
+            tasks: {
+                ...tasks.tasks,
+                [+draggableId]: {
+                    ...tasks.tasks[+draggableId],
+                    status: destination.droppableId,
+                },
+            },
             columns: {
-                ...data.columns,
+                ...tasks.columns,
                 [newStart.id]: newStart,
                 [newFinish.id]: newFinish,
             },
         };
 
-        setData(newState);
+        updateList(newState);
     }
 
     return (
-        <DragDropContext
-            onDragStart={onDragStart}
-            onDragUpdate={onDragUpdate}
-            onDragEnd={onDragEnd}
-        >
+        <DragDropContext onDragEnd={onDragEnd}>
             <div className={styles['kanban-container']}>
-                {data.columnOrder.map((columnId) => {
-                    const column = data.columns[columnId];
-                    const tasks = column.taskIds.map(
-                        (taskId) => data.tasks[taskId]
+                {tasks.columnOrder.map((columnId) => {
+                    const column = tasks.columns[columnId];
+                    const taskList = column.taskIds.map(
+                        (taskId) => tasks.tasks[taskId]
                     );
 
                     return (
                         <KanbanColumn
                             key={column.id}
                             column={column}
-                            tasks={tasks}
+                            tasks={taskList}
                         />
                     );
                 })}
