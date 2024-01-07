@@ -37,6 +37,7 @@ p {
 }
 
 button {
-    all: inherit;
+    font: inherit;
+    border: none;
     font-family: 'Urbanist', sans-serif !important;
 }

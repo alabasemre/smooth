@@ -1,6 +1,8 @@
 .task-form {
     width: 1000px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .input-group {
@@ -81,4 +83,17 @@
 .dropdown-text {
     font-weight: 600;
     color: var(--primary-text);
+}
+
+.add-task-button {
+    background-color: var(--highlight-text);
+    color: var(--white);
+    font-weight: 600;
+    padding: 8px 16px;
+    align-self: flex-end;
+    width: 100px;
+}
+
+.add-task-button:hover {
+    cursor: pointer;
 }

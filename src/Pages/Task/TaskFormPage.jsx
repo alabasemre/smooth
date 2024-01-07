@@ -7,6 +7,7 @@ import styles from './Task.module.css';
 import AssigneeDropdown from './AssigneeDropdown';
 import PriorityDropdown from './PriorityDropdown';
 import TaskContext from '../../store/task-context';
+import ReporterDropdown from './ReporterDropdown';
 
 let id = 5;
 
@@ -18,7 +19,7 @@ function TaskFormPage() {
     const titleRef = useRef();
     const descriptionRef = useRef();
     const [assignees, setAssignees] = useState(new Map());
-    const [reporter, setReporter] = useState(new Map());
+    const [reporter, setReporter] = useState(null);
     const [priority, setPriority] = useState(1);
 
     function addTaskHandler(e) {
@@ -69,21 +70,16 @@ function TaskFormPage() {
     }
 
     function handleReporter(id, action) {
-        const deepCopy = new Map(
-            JSON.parse(JSON.stringify(Array.from(reporter)))
-        );
         switch (action) {
             case 'ADD':
-                deepCopy.set(id, workerList[id]);
+                setReporter(workerList[id]);
                 break;
             case 'DELETE':
-                deepCopy.delete(id);
+                setReporter(null);
                 break;
             default:
                 break;
         }
-
-        setReporter(deepCopy);
     }
 
     function handlePriority(id) {
@@ -111,9 +107,15 @@ function TaskFormPage() {
 
                 <div className={styles['input-group']}>
                     <label htmlFor='description'>Raporlayan</label>
-                    <AssigneeDropdown
+                    {/* <AssigneeDropdown
                         assignees={reporter}
                         handleAssignee={handleReporter}
+                        workerList={workerList}
+                    /> */}
+
+                    <ReporterDropdown
+                        reporter={reporter}
+                        handleReporter={handleReporter}
                         workerList={workerList}
                     />
                 </div>
@@ -135,7 +137,12 @@ function TaskFormPage() {
                     />
                 </div>
 
-                <button onClick={addTaskHandler}>Ekle</button>
+                <button
+                    className={styles['add-task-button']}
+                    onClick={addTaskHandler}
+                >
+                    Ekle
+                </button>
             </form>
         </>
     );

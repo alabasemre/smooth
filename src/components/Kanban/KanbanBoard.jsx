@@ -1,13 +1,19 @@
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 
 import KanbanColumn from './KanbanColumn';
 
 import styles from './Kanban.module.css';
 import TaskContext from '../../store/task-context';
+import TaskDetail from '../TaskDetail/TaskDetail';
 
 function KanbanBoard() {
     const { tasks, updateList } = useContext(TaskContext);
+    const modalRef = useRef();
+
+    function openDetail(task) {
+        modalRef.current.open(task);
+    }
 
     function onDragEnd(result) {
         const { destination, source, draggableId } = result;
@@ -39,15 +45,6 @@ function KanbanBoard() {
                     [newColumn.id]: newColumn,
                 },
             };
-
-            // const newData = {
-            //     ...tasks,
-            //     tasks: {...tasks.tasks, [] },
-            //     columns: {
-            //         ...tasks.columns,
-            //         [newColumn.id]: newColumn,
-            //     },
-            // };
 
             updateList(newData);
             return;
@@ -89,24 +86,28 @@ function KanbanBoard() {
     }
 
     return (
-        <DragDropContext onDragEnd={onDragEnd}>
-            <div className={styles['kanban-container']}>
-                {tasks.columnOrder.map((columnId) => {
-                    const column = tasks.columns[columnId];
-                    const taskList = column.taskIds.map(
-                        (taskId) => tasks.tasks[taskId]
-                    );
+        <>
+            <TaskDetail ref={modalRef} />
+            <DragDropContext onDragEnd={onDragEnd}>
+                <div className={styles['kanban-container']}>
+                    {tasks.columnOrder.map((columnId) => {
+                        const column = tasks.columns[columnId];
+                        const taskList = column.taskIds.map(
+                            (taskId) => tasks.tasks[taskId]
+                        );
 
-                    return (
-                        <KanbanColumn
-                            key={column.id}
-                            column={column}
-                            tasks={taskList}
-                        />
-                    );
-                })}
-            </div>
-        </DragDropContext>
+                        return (
+                            <KanbanColumn
+                                openDetailModal={openDetail}
+                                key={column.id}
+                                column={column}
+                                tasks={taskList}
+                            />
+                        );
+                    })}
+                </div>
+            </DragDropContext>{' '}
+        </>
     );
 }
 

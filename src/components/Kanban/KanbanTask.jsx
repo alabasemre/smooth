@@ -4,7 +4,7 @@ import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import styles from './Kanban.module.css';
 import initialData from '../../initial-data';
 
-function KanbanTask({ task, index }) {
+function KanbanTask({ task, index, openDetailModal }) {
     const classes = `${styles['task-container']}`;
 
     return (
@@ -17,6 +17,7 @@ function KanbanTask({ task, index }) {
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                     ref={provided.innerRef}
+                    onClick={() => openDetailModal(task)}
                 >
                     {/* <div
                         className={styles['task-handle']}

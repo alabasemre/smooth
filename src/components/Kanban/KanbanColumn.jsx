@@ -4,7 +4,7 @@ import { Droppable } from 'react-beautiful-dnd';
 import KanbanTask from './KanbanTask';
 import styles from './Kanban.module.css';
 
-function KanbanColumn({ column, tasks }) {
+function KanbanColumn({ column, tasks, openDetailModal }) {
     return (
         <div className={styles['column-container']}>
             <h3 className={styles['column-title']}>{column.title}</h3>
@@ -21,6 +21,7 @@ function KanbanColumn({ column, tasks }) {
                     >
                         {tasks.map((task, index) => (
                             <KanbanTask
+                                openDetailModal={openDetailModal}
                                 key={task.id}
                                 task={task}
                                 index={index}

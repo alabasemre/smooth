@@ -1,0 +1,8 @@
+.modal-container {
+    position: relative;
+    padding: 0;
+}
+
+.modal-content {
+    padding: 16px;
+}
