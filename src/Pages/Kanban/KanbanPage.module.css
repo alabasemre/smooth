@@ -1,0 +1,34 @@
+.filter-container {
+    margin-bottom: 12px;
+}
+
+.filter-text {
+    border: 1px solid var(--secondary-bg);
+    color: var(--primary-text);
+    background: var(--primary-bg);
+    height: 30px;
+    margin-right: 12px;
+    border-radius: 6px;
+    padding: 0 10px;
+}
+
+.filter-button {
+    background-color: transparent;
+    border: none;
+    border-radius: 3px;
+    height: 30px;
+    padding: 0 14px;
+
+    font-size: 14.5px;
+    font-weight: 600;
+    font-family: 'Urbanist', sans-serif;
+    color: var(--primary-text);
+}
+
+.filter-button:hover {
+    background-color: var(--primary-bg);
+
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+}

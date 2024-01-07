@@ -1,0 +1,11 @@
+.header-project {
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--primary-text);
+}
+
+.header-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 8px 0;
+}

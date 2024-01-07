@@ -1,0 +1,65 @@
+.sidebar-container {
+    position: fixed;
+    background-color: var(--primary-bg);
+    border-right: 1px solid var(--secondary-bg);
+    padding: 0 16px 23px;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    width: 230px;
+    z-index: 100;
+}
+
+.project-info {
+    display: flex;
+    padding: 24px 4px;
+    gap: 8px;
+}
+
+.project-logo {
+    width: 40px;
+    height: 40px;
+}
+
+.project-logo img {
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+
+.project-texts {
+    display: grid;
+    align-items: center;
+}
+
+.project-name {
+    font-weight: bold;
+}
+
+.project-category {
+    font-size: 12px;
+    margin: 0;
+}
+
+.sidebar-items {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-item {
+    padding: 8px 12px;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--primary-text);
+    text-decoration: none;
+}
+
+.sidebar-item:hover {
+    background: var(--secondary-bg);
+    color: var(--black);
+}
+
+.active {
+    background: var(--secondary-bg);
+    color: var(--highlight-text);
+}

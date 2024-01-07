@@ -1,0 +1,37 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+    --primary-text: #172b4d;
+    --secondary-text: #5e6c84;
+
+    --highlight-text: #7a52cc;
+
+    --primary-bg: #f4f5f7;
+    --secondary-bg: #ebecf0;
+
+    --light-dark-shadow: #091e4240;
+
+    --priority-1: rgb(233, 73, 74);
+    --priority-2: rgb(233, 127, 51);
+    --priority-3: rgb(87, 165, 90);
+
+    --white: #ffffff;
+    --black: #000000;
+}
+
+body {
+    all: inherit;
+    font-family: 'Urbanist', sans-serif;
+    overflow: hidden;
+    color: var(--primary-text);
+}
+
+p {
+    margin: 0;
+}
