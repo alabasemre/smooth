@@ -32,10 +32,11 @@ function TaskDetail() {
     const [assignees, setAssignees] = useState(new Map());
     const [reporter, setReporter] = useState(null);
     const [priority, setPriority] = useState(1);
+    const { tasks } = useContext(TaskContext);
 
     useEffect(() => {
         modalRef.current.showModal();
-        const currentTask = Object.entries(initialData.tasks).find((task) => {
+        const currentTask = Object.entries(tasks.tasks).find((task) => {
             return task[1].id === +taskId;
         })[1];
 

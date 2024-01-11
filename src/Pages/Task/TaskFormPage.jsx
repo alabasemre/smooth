@@ -48,7 +48,7 @@ function TaskFormPage() {
         titleRef.current.value = '';
         descriptionRef.current.value = '';
         setAssignees(new Map());
-        setReporter(new Map());
+        setReporter(null);
     }
 
     function handleAssignee(id, action) {
