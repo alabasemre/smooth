@@ -1,8 +1,129 @@
 .modal-container {
-    position: relative;
+    position: fixed;
     padding: 0;
+    border-radius: 5px;
+    border: none;
 }
 
 .modal-content {
     padding: 16px;
+    width: min(100vw, 1024px);
+    min-width: 600px;
+    max-height: 800px;
+    min-height: 500px;
+}
+
+.topbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar-task {
+    color: var(--secondary-text);
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.topbar-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.topbar-button {
+    background-color: transparent;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    gap: 5px;
+}
+
+.topbar-button span {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.topbar-button:hover {
+    background-color: var(--secondary-bg);
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.task-content-container {
+    display: flex;
+    gap: 16px;
+}
+
+.task-content-left {
+    width: 65%;
+}
+
+.task-content-right {
+    width: 35%;
+}
+
+.task-content-subtitle {
+    color: var(--secondary-text);
+}
+
+.task-comment-add {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 16px;
+}
+
+.task-comment-add [type='text'] {
+    flex: 1;
+    border: 1px solid var(--secondary-bg);
+    border-radius: 3px;
+    padding: 0px 8px;
+    font-weight: 600;
+    font-family: 'Urbanist', 'sans-serif';
+}
+
+.task-comment-group {
+    margin-bottom: 16px;
+    border: 1px solid var(--secondary-bg);
+    padding: 8px;
+}
+
+.task-comment-user-img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
+
+.task-comment-header {
+    display: flex;
+    color: var(--secondary-text);
+    font-weight: 600;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+
+.task-comment-text {
+    color: var(--secondary-text);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.task-dropdown-group h5 {
+    color: var(--secondary-text);
+    margin-bottom: 4px;
+}
+
+.task-dropdown-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--secondary-bg);
+    width: fit-content;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
 }

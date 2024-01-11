@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom';
 import KanbanBoard from '../../components/Kanban/KanbanBoard';
 import PageHeader from '../../components/PageHeader/PageHeader';
 
@@ -15,6 +16,7 @@ function KanbanPage() {
             </div>
 
             <KanbanBoard />
+            <Outlet />
         </>
     );
 }

@@ -3,9 +3,15 @@ import { Draggable } from 'react-beautiful-dnd';
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import styles from './Kanban.module.css';
 import initialData from '../../initial-data';
+import { useNavigate } from 'react-router-dom';
 
-function KanbanTask({ task, index, openDetailModal }) {
+function KanbanTask({ task, index }) {
     const classes = `${styles['task-container']}`;
+    let navigate = useNavigate();
+
+    const taskClickHandler = () => {
+        navigate(`${task.id}`);
+    };
 
     return (
         <Draggable draggableId={task.id.toString()} index={index} key={task.id}>
@@ -17,7 +23,7 @@ function KanbanTask({ task, index, openDetailModal }) {
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                     ref={provided.innerRef}
-                    onClick={() => openDetailModal(task)}
+                    onClick={taskClickHandler}
                 >
                     {/* <div
                         className={styles['task-handle']}

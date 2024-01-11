@@ -32,7 +32,7 @@ function ReporterDropdown({ workerList, reporter, handleReporter }) {
             {isOpen && (
                 <div className={styles['dropdown-container']}>
                     {Object.entries(workerList).map(([key, value]) => {
-                        if (reporter.id === value.id) {
+                        if (reporter && reporter.id === value.id) {
                             return;
                         }
 

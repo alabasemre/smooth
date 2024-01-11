@@ -1,19 +1,13 @@
-import { useContext, useRef } from 'react';
+import { useContext } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 
 import KanbanColumn from './KanbanColumn';
 
 import styles from './Kanban.module.css';
 import TaskContext from '../../store/task-context';
-import TaskDetail from '../TaskDetail/TaskDetail';
 
 function KanbanBoard() {
     const { tasks, updateList } = useContext(TaskContext);
-    const modalRef = useRef();
-
-    function openDetail(task) {
-        modalRef.current.open(task);
-    }
 
     function onDragEnd(result) {
         const { destination, source, draggableId } = result;
@@ -87,7 +81,6 @@ function KanbanBoard() {
 
     return (
         <>
-            <TaskDetail ref={modalRef} />
             <DragDropContext onDragEnd={onDragEnd}>
                 <div className={styles['kanban-container']}>
                     {tasks.columnOrder.map((columnId) => {
@@ -98,7 +91,6 @@ function KanbanBoard() {
 
                         return (
                             <KanbanColumn
-                                openDetailModal={openDetail}
                                 key={column.id}
                                 column={column}
                                 tasks={taskList}

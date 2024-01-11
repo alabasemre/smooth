@@ -37,6 +37,7 @@
 
 .assignees-container {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .assignees-button {
@@ -66,7 +67,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 8px 12px;
+    padding: 4px 12px;
 }
 
 .dropdown-item:hover {
@@ -75,8 +76,8 @@
 }
 
 .dropdown-img {
-    height: 36px;
-    width: 36px;
+    height: 32px;
+    width: 32px;
     border-radius: 50%;
 }
 

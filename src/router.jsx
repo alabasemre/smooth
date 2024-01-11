@@ -3,6 +3,7 @@ import './index.css';
 import HomeLayout from './layouts/HomeLayout';
 import KanbanPage from './Pages/Kanban/KanbanPage';
 import TaskFormPage from './Pages/Task/TaskFormPage';
+import TaskDetail from './components/TaskDetail/TaskDetail';
 
 const router = createBrowserRouter([
     {
@@ -10,7 +11,11 @@ const router = createBrowserRouter([
         element: <HomeLayout />,
         children: [
             { path: '/', element: <KanbanPage /> },
-            { path: '/pano', element: <KanbanPage /> },
+            {
+                path: '/pano',
+                element: <KanbanPage />,
+                children: [{ path: ':taskId', element: <TaskDetail /> }],
+            },
             { path: '/konu', element: <TaskFormPage /> },
         ],
     },

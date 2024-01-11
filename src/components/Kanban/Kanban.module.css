@@ -62,12 +62,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-right: 8px;
 }
 
 .assignee-img {
     height: 32px;
     width: 32px;
-    object-fit: cover;
+    object-fit: fill;
     margin-right: -9px;
     border: 2px solid var(--white);
     border-radius: 50px;

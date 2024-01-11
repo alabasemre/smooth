@@ -1,4 +1,6 @@
 const initialData = {
+    activeUser: 1,
+
     workers: {
         1: { id: 1, name: 'Emre', img: 'https://i.ibb.co/6RJ5hq6/gaben.jpg' },
         2: { id: 2, name: 'Oguz', img: 'https://i.ibb.co/FK7p9CJ/capture.png' },
@@ -10,9 +12,16 @@ const initialData = {
     },
 
     priority: {
-        1: { text: 'High' },
-        2: { text: 'Medium' },
-        3: { text: 'Low' },
+        1: { text: 'Yüksek' },
+        2: { text: 'Orta' },
+        3: { text: 'Düşük' },
+    },
+
+    status: {
+        todo: { text: 'Yapılacak' },
+        planned: { text: 'Planlandı' },
+        'in-progress': { text: 'Yapılıyor' },
+        done: { text: 'Tamamlandı' },
     },
 
     tasks: {
@@ -25,7 +34,12 @@ const initialData = {
             status: 'todo',
             priority: 1,
             comments: [
-                { date: '01.01.2024 14:30', comment: 'Nice Work', worker: 1 },
+                {
+                    id: 1,
+                    date: '01.01.2024 14:30',
+                    comment: 'Nice Work',
+                    worker: 1,
+                },
             ],
             createdAt: '20.12.2023',
         },
