@@ -32,6 +32,36 @@ const taskReducer = (state, action) => {
             },
         };
     }
+
+    if (action.type === 'DELETE') {
+        const currentTask = action.data;
+        const tasks = state.tasks.tasks;
+        const newTasks = JSON.parse(JSON.stringify(tasks));
+
+        delete newTasks[action.data.id];
+
+        const columns = state.tasks.columns;
+        const oldCol = columns[action.data.status];
+        const newTaskIds = state.tasks.columns[
+            currentTask.status
+        ].taskIds.filter((id) => id != currentTask.id);
+
+        const newColumn = {
+            ...oldCol,
+            taskIds: newTaskIds,
+        };
+
+        return {
+            tasks: {
+                ...state.tasks,
+                tasks: newTasks,
+                columns: {
+                    ...state.tasks.columns,
+                    [action.data.status]: newColumn,
+                },
+            },
+        };
+    }
 };
 
 const TaskProvider = ({ children }) => {
@@ -45,10 +75,15 @@ const TaskProvider = ({ children }) => {
         taskActions({ type: 'ADD', data: task, id: task.id });
     };
 
+    const deleteTask = (task) => {
+        taskActions({ type: 'DELETE', data: task });
+    };
+
     const taskContext = {
         tasks: taskState.tasks,
         updateList: reorderTasks,
         addTask: addTask,
+        deleteTask: deleteTask,
     };
 
     return (

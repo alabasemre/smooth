@@ -10,7 +10,7 @@ function KanbanTask({ task, index }) {
     let navigate = useNavigate();
 
     const taskClickHandler = () => {
-        navigate(`${task.id}`);
+        navigate(`/pano/${task.id}`);
     };
 
     return (

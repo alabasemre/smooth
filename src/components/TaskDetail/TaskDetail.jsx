@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import {
     IoTrashBinOutline,
@@ -16,8 +16,10 @@ import StatusDropdown from './StatusDropdown';
 import AssigneeDropdown from '../../Pages/Task/AssigneeDropdown';
 import ReporterDropdown from '../../Pages/Task/ReporterDropdown';
 import PriorityDropdown from '../../Pages/Task/PriorityDropdown';
+import TaskContext from '../../store/task-context';
 
 function TaskDetail() {
+    const { deleteTask } = useContext(TaskContext);
     const modalRef = useRef();
     const workerList = initialData.workers;
     let { taskId } = useParams();
@@ -33,17 +35,26 @@ function TaskDetail() {
 
     useEffect(() => {
         modalRef.current.showModal();
-        setTask(initialData.tasks[taskId]);
-        setStatus(initialData.tasks[taskId].status);
+        const currentTask = Object.entries(initialData.tasks).find((task) => {
+            return task[1].id === +taskId;
+        })[1];
+
+        setTask(currentTask);
+        setStatus(currentTask.status);
         const assigneeMap = new Map();
-        initialData.tasks[taskId].assignees.forEach((workerId) => {
+        currentTask.assignees.forEach((workerId) => {
             assigneeMap.set(workerId, workerList[workerId]);
         });
 
-        setReporter(workerList[initialData.tasks[taskId].reporter]);
+        setReporter(workerList[currentTask.reporter]);
         setAssignees(assigneeMap);
-        setPriority(initialData.tasks[taskId].priority);
+        setPriority(currentTask.priority);
     }, []);
+
+    function deleteTaskHandler() {
+        deleteTask(task);
+        navigate('/pano');
+    }
 
     function handleAssignee(id, action) {
         const deepCopy = new Map(
@@ -114,7 +125,12 @@ function TaskDetail() {
                                     <IoCopyOutline />
                                     <span>Linki Kopyala</span>
                                 </button>
-                                <button className={styles['topbar-button']}>
+                                <button
+                                    className={styles['topbar-button']}
+                                    onClick={() => {
+                                        deleteTaskHandler();
+                                    }}
+                                >
                                     <IoTrashBinOutline />
                                 </button>
                                 <button

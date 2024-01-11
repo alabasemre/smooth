@@ -81,24 +81,26 @@ function KanbanBoard() {
 
     return (
         <>
-            <DragDropContext onDragEnd={onDragEnd}>
-                <div className={styles['kanban-container']}>
-                    {tasks.columnOrder.map((columnId) => {
-                        const column = tasks.columns[columnId];
-                        const taskList = column.taskIds.map(
-                            (taskId) => tasks.tasks[taskId]
-                        );
+            {tasks && (
+                <DragDropContext onDragEnd={onDragEnd}>
+                    <div className={styles['kanban-container']}>
+                        {tasks.columnOrder.map((columnId) => {
+                            const column = tasks.columns[columnId];
+                            const taskList = column.taskIds.map((taskId) => {
+                                return tasks.tasks[taskId];
+                            });
 
-                        return (
-                            <KanbanColumn
-                                key={column.id}
-                                column={column}
-                                tasks={taskList}
-                            />
-                        );
-                    })}
-                </div>
-            </DragDropContext>{' '}
+                            return (
+                                <KanbanColumn
+                                    key={column.id}
+                                    column={column}
+                                    tasks={taskList}
+                                />
+                            );
+                        })}
+                    </div>
+                </DragDropContext>
+            )}
         </>
     );
 }

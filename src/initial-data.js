@@ -26,7 +26,7 @@ const initialData = {
 
     tasks: {
         1: {
-            id: '1',
+            id: 1,
             content: 'You can use rich text with images in issue descriptions.',
             description: 'task-1 description',
             reporter: 1,
@@ -55,7 +55,7 @@ const initialData = {
             createdAt: '20.12.2023 14:30',
         },
         3: {
-            id: '3',
+            id: 3,
             content: 'Charge my phone',
             description: 'task-3 description',
             reporter: 1,

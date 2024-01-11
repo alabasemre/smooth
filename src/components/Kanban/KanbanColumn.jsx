@@ -19,13 +19,15 @@ function KanbanColumn({ column, tasks }) {
                         ref={provided.innerRef}
                         {...provided.droppableProps}
                     >
-                        {tasks.map((task, index) => (
-                            <KanbanTask
-                                key={task.id}
-                                task={task}
-                                index={index}
-                            />
-                        ))}
+                        {tasks.map((task, index) => {
+                            return (
+                                <KanbanTask
+                                    key={task.id}
+                                    task={task}
+                                    index={index}
+                                />
+                            );
+                        })}
                         {provided.placeholder}
                     </div>
                 )}

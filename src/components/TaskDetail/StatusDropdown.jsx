@@ -11,7 +11,6 @@ function StatusDropdown({ handleStatus, currentStatus }) {
     return (
         <div className={styles['dropdown-container']}>
             {Object.entries(statusList).map(([key, value]) => {
-                console.log(currentStatus);
                 if (key === currentStatus) {
                     return;
                 }
