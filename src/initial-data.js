@@ -22,6 +22,7 @@ const initialData = {
         planned: { text: 'Planlandı' },
         'in-progress': { text: 'Yapılıyor' },
         done: { text: 'Tamamlandı' },
+        closed: { text: 'Kapandı' },
     },
 
     sprints: {
@@ -37,7 +38,7 @@ const initialData = {
                     description: 'task-1 description',
                     reporter: 1,
                     assignees: [2, 3],
-                    status: 'todo',
+                    status: 'planned',
                     priority: 1,
                     comments: [
                         {
@@ -55,7 +56,7 @@ const initialData = {
                     description: 'task-2 description',
                     reporter: 1,
                     assignees: [2],
-                    status: 'todo',
+                    status: 'planned',
                     priority: 2,
                     comments: [],
                     createdAt: '20.12.2023 14:30',
@@ -66,7 +67,7 @@ const initialData = {
                     description: 'task-3 description',
                     reporter: 1,
                     assignees: [1],
-                    status: 'todo',
+                    status: 'planned',
                     priority: 3,
                     comments: [],
                     createdAt: '20.12.2023 14:30',
@@ -77,22 +78,17 @@ const initialData = {
                     description: 'task-4 description',
                     reporter: 1,
                     assignees: [1],
-                    status: 'todo',
+                    status: 'planned',
                     priority: 1,
                     comments: [],
                     createdAt: '20.12.2023 12:30',
                 },
             },
             columns: {
-                todo: {
-                    id: 'todo',
-                    title: 'Yapılacaklar',
-                    taskIds: [1, 2, 3, 4],
-                },
                 planned: {
                     id: 'planned',
                     title: 'Planlandı',
-                    taskIds: [],
+                    taskIds: [1, 2, 3, 4],
                 },
                 'in-progress': {
                     id: 'in-progress',
@@ -104,9 +100,14 @@ const initialData = {
                     title: 'Tamamlandı',
                     taskIds: [],
                 },
+                closed: {
+                    id: 'closed',
+                    title: 'Kapandı',
+                    taskIds: [],
+                },
             },
 
-            columnOrder: ['todo', 'planned', 'in-progress', 'done'],
+            columnOrder: ['planned', 'in-progress', 'done', 'closed'],
         },
         2: {
             id: 2,
@@ -120,7 +121,7 @@ const initialData = {
                     description: 'task-1 description',
                     reporter: 1,
                     assignees: [2, 3],
-                    status: 'todo',
+                    status: 'planned',
                     priority: 1,
                     comments: [
                         {
@@ -138,7 +139,7 @@ const initialData = {
                     description: 'task-2 description',
                     reporter: 1,
                     assignees: [2],
-                    status: 'todo',
+                    status: 'planned',
                     priority: 2,
                     comments: [],
                     createdAt: '20.12.2023 14:30',
@@ -156,15 +157,10 @@ const initialData = {
                 },
             },
             columns: {
-                todo: {
-                    id: 'todo',
-                    title: 'Yapılacaklar',
-                    taskIds: [1, 2],
-                },
                 planned: {
                     id: 'planned',
                     title: 'Planlandı',
-                    taskIds: [3],
+                    taskIds: [1, 2, 3],
                 },
                 'in-progress': {
                     id: 'in-progress',
@@ -176,90 +172,17 @@ const initialData = {
                     title: 'Tamamlandı',
                     taskIds: [],
                 },
+                closed: {
+                    id: 'closed',
+                    title: 'Kapandı',
+                    taskIds: [],
+                },
             },
 
-            columnOrder: ['todo', 'planned', 'in-progress', 'done'],
+            columnOrder: ['planned', 'in-progress', 'done', 'closed'],
         },
     },
 
-    tasks: {
-        1: {
-            id: 1,
-            content: 'You can use rich text with images in issue descriptions.',
-            description: 'task-1 description',
-            reporter: 1,
-            assignees: [2, 3],
-            status: 'todo',
-            priority: 1,
-            comments: [
-                {
-                    id: 1,
-                    date: '01.01.2024 14:30',
-                    comment: 'Nice Work',
-                    worker: 1,
-                },
-            ],
-            createdAt: '20.12.2023',
-        },
-        2: {
-            id: 2,
-            content: 'Watch my favorite show',
-            description: 'task-2 description',
-            reporter: 1,
-            assignees: [2],
-            status: 'todo',
-            priority: 2,
-            comments: [],
-            createdAt: '20.12.2023 14:30',
-        },
-        3: {
-            id: 3,
-            content: 'Charge my phone',
-            description: 'task-3 description',
-            reporter: 1,
-            assignees: [1],
-            status: 'todo',
-            priority: 3,
-            comments: [],
-            createdAt: '20.12.2023 14:30',
-        },
-        4: {
-            id: 4,
-            content: 'Cook dinner',
-            description: 'task-4 description',
-            reporter: 1,
-            assignees: [1],
-            status: 'todo',
-            priority: 1,
-            comments: [],
-            createdAt: '20.12.2023 12:30',
-        },
-    },
-
-    columns: {
-        todo: {
-            id: 'todo',
-            title: 'Yapılacaklar',
-            taskIds: [1, 2, 3, 4],
-        },
-        planned: {
-            id: 'planned',
-            title: 'Planlandı',
-            taskIds: [],
-        },
-        'in-progress': {
-            id: 'in-progress',
-            title: 'Yapılıyor',
-            taskIds: [],
-        },
-        done: {
-            id: 'done',
-            title: 'Tamamlandı',
-            taskIds: [],
-        },
-    },
-
-    columnOrder: ['todo', 'planned', 'in-progress', 'done'],
+    columnOrder: ['planned', 'in-progress', 'done', 'closed'],
 };
-
 export default initialData;
