@@ -4,12 +4,25 @@ import TaskContext from './task-context';
 import initialData from '../initial-data';
 
 const defaultTaskState = {
-    tasks: initialData,
+    tasks: initialData.sprints[1],
+    sprints: initialData.sprints,
+    activeSprintId: 1,
 };
 
 const taskReducer = (state, action) => {
     if (action.type === 'REORDER') {
-        return { tasks: action.data };
+        return {
+            sprints: { ...state.sprints, [action.data.id]: action.data },
+            tasks: action.data,
+        };
+    }
+
+    if (action.type === 'CHANGE_SPRINT') {
+        return {
+            ...state,
+            tasks: state.sprints[action.sprintId],
+            activeSprintId: action.sprintId,
+        };
     }
 
     if (action.type === 'ADD') {
@@ -21,15 +34,18 @@ const taskReducer = (state, action) => {
             taskIds: [...oldCol.taskIds, action.id],
         };
 
-        return {
-            tasks: {
-                ...state.tasks,
-                tasks: { ...state.tasks.tasks, [action.id]: action.data },
-                columns: {
-                    ...state.tasks.columns,
-                    [action.data.status]: newColumn,
-                },
+        const newTasks = {
+            ...state.tasks,
+            tasks: { ...state.tasks.tasks, [action.id]: action.data },
+            columns: {
+                ...state.tasks.columns,
+                [action.data.status]: newColumn,
             },
+        };
+
+        return {
+            tasks: newTasks,
+            sprints: { ...state.sprints, [action.id]: newTasks },
         };
     }
 
@@ -79,11 +95,18 @@ const TaskProvider = ({ children }) => {
         taskActions({ type: 'DELETE', data: task });
     };
 
+    const changeSprint = (sprintId) => {
+        taskActions({ type: 'CHANGE_SPRINT', sprintId: sprintId });
+    };
+
     const taskContext = {
         tasks: taskState.tasks,
+        sprints: taskState.sprints,
+        activeSprintId: taskState.activeSprintId,
         updateList: reorderTasks,
         addTask: addTask,
         deleteTask: deleteTask,
+        changeSprint: changeSprint,
     };
 
     return (
