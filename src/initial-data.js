@@ -149,7 +149,7 @@ const initialData = {
                     description: 'task-3 description',
                     reporter: 1,
                     assignees: [1],
-                    status: 'todo',
+                    status: 'planned',
                     priority: 3,
                     comments: [],
                     createdAt: '20.12.2023 14:30',

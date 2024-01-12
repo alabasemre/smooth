@@ -28,7 +28,7 @@
 body {
     all: inherit;
     font-family: 'Urbanist', sans-serif !important;
-    overflow: hidden;
+
     color: var(--primary-text);
 }
 

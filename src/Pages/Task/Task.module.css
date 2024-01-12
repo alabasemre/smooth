@@ -98,3 +98,59 @@
 .add-task-button:hover {
     cursor: pointer;
 }
+
+.filter-button {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 3px;
+    height: 30px;
+    padding: 0 14px;
+    font-size: 14.5px;
+    font-weight: 600;
+    font-family: 'Urbanist', sans-serif;
+    color: var(--primary-text);
+    gap: 8px;
+}
+
+.filter-button:hover {
+    background-color: var(--primary-bg);
+
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+}
+
+.sprints-dropdown-selected {
+    background-color: var(--secondary-bg);
+    color: var(--primary-text);
+}
+
+.sprints-dropdown-selected:hover {
+    background-color: var(--secondary-bg);
+    color: var(--primary-text);
+}
+
+.sprints-dropdown-container {
+    position: relative;
+    width: 100px;
+}
+
+.sprints-dropdown-items {
+    position: absolute;
+    margin-top: 2px;
+}
+
+.sprints-dropdown-item {
+    color: var(--primary-bg);
+    background-color: var(--highlight-text);
+
+    width: 100px;
+    border-radius: 3px;
+}
+.sprints-dropdown-item:hover {
+    border-radius: 3px;
+    color: var(--primary-text);
+    background-color: var(--secondary-bg);
+}

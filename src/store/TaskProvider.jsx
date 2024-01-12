@@ -12,6 +12,7 @@ const defaultTaskState = {
 const taskReducer = (state, action) => {
     if (action.type === 'REORDER') {
         return {
+            ...state,
             sprints: { ...state.sprints, [action.data.id]: action.data },
             tasks: action.data,
         };
@@ -44,8 +45,9 @@ const taskReducer = (state, action) => {
         };
 
         return {
+            ...state,
             tasks: newTasks,
-            sprints: { ...state.sprints, [action.id]: newTasks },
+            sprints: { ...state.sprints, [newTasks.id]: newTasks },
         };
     }
 
@@ -67,7 +69,21 @@ const taskReducer = (state, action) => {
             taskIds: newTaskIds,
         };
 
+        console.log('Col: ', newColumn);
+
         return {
+            ...state,
+            sprints: {
+                ...state.sprints,
+                [state.activeSprintId]: {
+                    ...state.sprints[state.activeSprintId],
+                    tasks: newTasks,
+                    columns: {
+                        ...state.tasks.columns,
+                        [action.data.status]: newColumn,
+                    },
+                },
+            },
             tasks: {
                 ...state.tasks,
                 tasks: newTasks,

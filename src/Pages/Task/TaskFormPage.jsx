@@ -8,12 +8,18 @@ import AssigneeDropdown from './AssigneeDropdown';
 import PriorityDropdown from './PriorityDropdown';
 import TaskContext from '../../store/task-context';
 import ReporterDropdown from './ReporterDropdown';
+import { FaArrowDown } from 'react-icons/fa';
 
 let id = 5;
 
 function TaskFormPage() {
-    const { addTask } = useContext(TaskContext);
+    const { sprints, changeSprint, addTask, activeSprintId } =
+        useContext(TaskContext);
+    const [sprintDropdownOpen, setSprintDropdownOpen] = useState(false);
 
+    function sprintDropdownHandler() {
+        setSprintDropdownOpen((isOpen) => !isOpen);
+    }
     const workerList = initialData.workers;
 
     const titleRef = useRef();
@@ -24,6 +30,8 @@ function TaskFormPage() {
 
     function addTaskHandler(e) {
         e.preventDefault();
+        console.log(reporter);
+
         addTask({
             id: id,
             content: titleRef.current.value,
@@ -33,11 +41,7 @@ function TaskFormPage() {
             ).map(([key, value]) => {
                 return value[0];
             }),
-            reporter: Object.entries(
-                JSON.parse(JSON.stringify(Array.from(reporter)))
-            ).map(([key, value]) => {
-                return value[0];
-            }),
+            reporter: reporter.id,
             priority: priority,
             status: 'todo',
             createdAt: '01.01.2024',
@@ -89,6 +93,37 @@ function TaskFormPage() {
     return (
         <>
             <PageHeader title='Konu Ekle' />
+            {sprints && (
+                <div className={styles['sprints-dropdown-container']}>
+                    <div
+                        className={`${styles['sprints-dropdown-selected']} ${styles['filter-button']}`}
+                        onClick={sprintDropdownHandler}
+                    >
+                        <span> {sprints[activeSprintId]?.title}</span>
+                        <FaArrowDown size={12} />
+                    </div>
+                    {sprintDropdownOpen && (
+                        <div className={styles['sprints-dropdown-items']}>
+                            {Object.entries(sprints).map(([key, value]) => {
+                                if (value.id !== activeSprintId) {
+                                    return (
+                                        <div
+                                            key={key}
+                                            className={`${styles['sprints-dropdown-item']} ${styles['filter-button']}`}
+                                            onClick={() => {
+                                                changeSprint(value.id);
+                                                setSprintDropdownOpen(false);
+                                            }}
+                                        >
+                                            {value.title}
+                                        </div>
+                                    );
+                                }
+                            })}
+                        </div>
+                    )}
+                </div>
+            )}
             <form
                 className={styles['task-form']}
                 onSubmit={(e) => {
