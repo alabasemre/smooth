@@ -19,6 +19,11 @@ const router = createBrowserRouter([
             { path: '/konu', element: <TaskFormPage /> },
         ],
     },
+    {
+        path: '*',
+        element: <HomeLayout />,
+        children: [{ path: '*', element: <KanbanPage /> }],
+    },
 ]);
 
 export default router;

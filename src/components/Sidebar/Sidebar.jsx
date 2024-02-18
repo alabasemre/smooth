@@ -29,8 +29,10 @@ function Sidebar() {
                     >
                         Konu Ekle
                     </NavLink>
-                    <NavLink
+
+                    {/* <NavLink
                         to='/sprint'
+                        onClick={() => {}}
                         className={({ isActive }) => activeClass(isActive)}
                     >
                         Sprint Ekle
@@ -40,19 +42,20 @@ function Sidebar() {
                         className={({ isActive }) => activeClass(isActive)}
                     >
                         Kapsam
-                    </NavLink>
+                    </NavLink> */}
                     <NavLink
                         to='/pano'
                         className={({ isActive }) => activeClass(isActive)}
                     >
                         Pano
                     </NavLink>
-                    <NavLink
+
+                    {/* <NavLink
                         to='/ayarlar'
                         className={({ isActive }) => activeClass(isActive)}
                     >
                         Proje Ayarları
-                    </NavLink>
+                    </NavLink> */}
                 </div>
             </div>
         </div>

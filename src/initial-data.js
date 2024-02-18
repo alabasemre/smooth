@@ -6,7 +6,7 @@ const initialData = {
         2: { id: 2, name: 'Oguz', img: 'https://i.ibb.co/FK7p9CJ/capture.png' },
         3: {
             id: 3,
-            name: 'Ahsen',
+            name: 'Ahmet',
             img: 'https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         },
     },
@@ -34,7 +34,7 @@ const initialData = {
                 1: {
                     id: 1,
                     content:
-                        'You can use rich text with images in issue descriptions.',
+                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
                     description: 'task-1 description',
                     reporter: 1,
                     assignees: [2, 3],
@@ -52,7 +52,8 @@ const initialData = {
                 },
                 2: {
                     id: 2,
-                    content: 'Watch my favorite show',
+                    content:
+                        'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
                     description: 'task-2 description',
                     reporter: 1,
                     assignees: [2],
@@ -63,7 +64,8 @@ const initialData = {
                 },
                 3: {
                     id: 3,
-                    content: 'Charge my phone',
+                    content:
+                        'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
                     description: 'task-3 description',
                     reporter: 1,
                     assignees: [1],
@@ -74,7 +76,7 @@ const initialData = {
                 },
                 4: {
                     id: 4,
-                    content: 'Cook dinner',
+                    content: 'Lorem Ipsum',
                     description: 'task-4 description',
                     reporter: 1,
                     assignees: [1],
@@ -117,7 +119,7 @@ const initialData = {
                 1: {
                     id: 1,
                     content:
-                        'You can use rich text with images in issue descriptions.',
+                        'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ',
                     description: 'task-1 description',
                     reporter: 1,
                     assignees: [2, 3],
@@ -135,7 +137,7 @@ const initialData = {
                 },
                 2: {
                     id: 2,
-                    content: 'Watch my favorite show',
+                    content: 'It is a long established',
                     description: 'task-2 description',
                     reporter: 1,
                     assignees: [2],
@@ -146,7 +148,7 @@ const initialData = {
                 },
                 3: {
                     id: 3,
-                    content: 'Charge my phone',
+                    content: 'It is a long established fact that a reader will',
                     description: 'task-3 description',
                     reporter: 1,
                     assignees: [1],
