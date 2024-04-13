@@ -43,7 +43,7 @@ function TaskFormPage() {
             }),
             reporter: reporter.id,
             priority: priority,
-            status: 'todo',
+            status: 'planned',
             createdAt: '01.01.2024',
             comments: [],
         });

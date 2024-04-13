@@ -30,6 +30,8 @@ const taskReducer = (state, action) => {
         const columns = state.tasks.columns;
         const oldCol = columns[action.data.status];
 
+        console.log('OLDCOL: ', columns);
+        console.log('data: ', action.data);
         const newColumn = {
             ...oldCol,
             taskIds: [...oldCol.taskIds, action.id],
